@@ -23,11 +23,11 @@
         </physics>
 
         <scene>
-        <sky>
+        <!-- <sky>
             <clouds>
                 <speed>12</speed>
             </clouds>
-        </sky>
+        </sky> -->
         </scene>
         <!-- A global light source -->
         <include>
