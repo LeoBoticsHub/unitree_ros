@@ -12,6 +12,7 @@
     <arg name="debug" default="false"/>
     <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
     <arg name="user_debug" default="false"/>
+    <arg name="sensors" default="false"/>
 
     <arg name="spawn_height" default="0.7"/>
     
@@ -27,7 +28,7 @@
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description"
            command="$(find xacro)/xacro --inorder '$(arg dollar)$(arg robot_path)/xacro/robot.xacro' 
-           DEBUG:=$(arg user_debug)"/>
+           DEBUG:=$(arg user_debug) SENSORS:=$(arg sensors)"/>
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <!-- Set trunk and joint positions at startup -->
@@ -58,8 +59,8 @@
         <arg name="rname" value="$(arg rname)"/>
     </include>
 
-    <arg name="robot_description" value="$(eval find(arg('rname') + '_description'))"/>
+    <arg name="robot_description_pkg" value="$(eval find(arg('rname') + '_description'))"/>
     <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" respawn="false" output="screen"
-        args="-d $(arg robot_description)/launch/check_joint.rviz"/>
+        args="-d $(arg robot_description_pkg)/launch/check_joint.rviz"/>
 
 </launch>
