@@ -30,7 +30,7 @@
         </collision>
     </link>
     <gazebo reference="lidar_mount">
-        <material>Gazebo/Gray</material>
+        <material>Gazebo/White</material>
     </gazebo>
 
     <xacro:VLP-16 parent="lidar_mount" name="lidar" topic="/lidar_points"
