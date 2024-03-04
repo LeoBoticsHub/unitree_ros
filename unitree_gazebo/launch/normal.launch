@@ -7,6 +7,7 @@
     <arg name="paused" default="true"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="true"/>
+    <arg name="rviz" default="true"/>
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
     <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
@@ -57,5 +58,9 @@
     <include file="$(find unitree_controller)/launch/set_ctrl.launch">
         <arg name="rname" value="$(arg rname)"/>
     </include>
+
+    <arg name="robot_description" value="$(eval find(arg('rname') + '_description'))"/>
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" respawn="false" output="screen"
+        args="-d $(arg robot_description)/launch/check_joint.rviz"/>
 
 </launch>
