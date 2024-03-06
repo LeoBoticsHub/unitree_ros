@@ -35,7 +35,9 @@
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <!-- Set trunk and joint positions at startup -->
     <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
-          args="-urdf -z $(arg spawn_height) -model $(arg rname)_gazebo -param robot_description -unpause"/>
+          args="-urdf -z $(arg spawn_height) -model $(arg rname)_gazebo -param robot_description -unpause
+          -J FL_thigh_joint 0.05 -J FR_thigh_joint 0.05 -J RL_thigh_joint 0.15 -J RR_thigh_joint 0.15"
+    />
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(arg dollar)$(arg robot_path)/config/robot_control.yaml" command="load"/>
