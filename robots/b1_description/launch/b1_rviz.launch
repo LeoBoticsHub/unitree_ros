@@ -2,9 +2,11 @@
 
     <arg name="user_debug" default="false"/>
     <arg name="sensors" default="false"/>
+    <arg name="lidar" default="false"/>
+    <arg name="cameras" default="false"/>
     
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find b1_description)/xacro/robot.xacro'
-            DEBUG:=$(arg user_debug) SENSORS:=$(arg sensors)"/>
+            DEBUG:=$(arg user_debug) SENSORS:=$(arg sensors) LIDAR:=$(arg lidar) CAMERAS:=$(arg cameras)"/>
 
     <!-- for higher robot_state_publisher average rate-->
     <!-- <param name="rate" value="1000"/> -->

@@ -1,18 +1,20 @@
 <launch>
     <arg name="wname" default="earth"/>
-    <arg name="rname" default="laikago"/>
+    <arg name="rname" default="b1"/>
     <arg name="robot_path" value="(find $(arg rname)_description)"/>
     <arg name="dollar" value="$"/>
 
     <arg name="paused" default="true"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="true"/>
-    <arg name="rviz" default="true"/>
+    <arg name="rviz" default="false"/>
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
     <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
     <arg name="user_debug" default="false"/>
     <arg name="sensors" default="false"/>
+    <arg name="lidar" default="false"/>
+    <arg name="cameras" default="false"/>
 
     <arg name="spawn_height" default="0.7"/>
     
@@ -28,7 +30,7 @@
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description"
            command="$(find xacro)/xacro --inorder '$(arg dollar)$(arg robot_path)/xacro/robot.xacro' 
-           DEBUG:=$(arg user_debug) SENSORS:=$(arg sensors)"/>
+           DEBUG:=$(arg user_debug) SENSORS:=$(arg sensors) LIDAR:=$(arg lidar) CAMERAS:=$(arg cameras)"/>
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <!-- Set trunk and joint positions at startup -->
