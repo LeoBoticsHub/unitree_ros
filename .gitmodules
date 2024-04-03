@@ -1,3 +1,10 @@
 [submodule "unitree_ros_to_real"]
 	path = unitree_ros_to_real
 	url = https://github.com/unitreerobotics/unitree_ros_to_real.git
+[submodule "robots/b1_description"]
+	path = robots/b1_description
+	url = git@github.com:LeoBoticsHub/b1_description.git
+	branch = sim_hack
+[submodule "robots/sensors_description"]
+	path = robots/sensors_description
+	url = git@github.com:LeoBoticsHub/sensors_description.git
